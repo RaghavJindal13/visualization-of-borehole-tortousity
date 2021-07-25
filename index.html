@@ -29,14 +29,22 @@
     "
   >
     <label>Upload Your File </label>
+    <progress value="0" max="100" id="uploader">0%</progress>
     <input
       type="file"
+      value="upload"
       id="csvFileInput"
       style="padding-bottom: 15px"
       data-height="500"
     />
+
     <!-- Printing the table with the input CSV file -->
     <table class="table table-bordered table-striped mb-0" id="csvRoot"></table>
+
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="./firebasee.js">
+      // Initialize Firebase
+    </script>
   </div>
   <div class="container-fluid mr-5" id="front_plot">
     <!-- Plotly chart will be drawn inside this DIV front view -->
