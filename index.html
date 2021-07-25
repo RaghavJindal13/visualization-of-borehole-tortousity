@@ -15,6 +15,29 @@
 </head>
 
 <body>
+  <!-- added drag and drop functionality -->
+  <div
+    class="
+      container
+      table-wrapper-scroll-y
+      my-custom-scrollbar
+      mb-5
+      mt-5
+      form-group
+      files
+      color
+    "
+  >
+    <label>Upload Your File </label>
+    <input
+      type="file"
+      id="csvFileInput"
+      style="padding-bottom: 15px"
+      data-height="500"
+    />
+    <!-- Printing the table with the input CSV file -->
+    <table class="table table-bordered table-striped mb-0" id="csvRoot"></table>
+  </div>
   <div class="container-fluid mr-5" id="front_plot">
     <!-- Plotly chart will be drawn inside this DIV front view -->
   </div>
@@ -30,29 +53,6 @@
   </div>
   <div class="container-fluid mr-5" id="plot2d_northing-easting">
     <!-- Plotly chart will be drawn inside this DIV back view -->
-  </div>
-
-  <!-- added drag and drop functionality -->
-  <div
-    class="
-      container
-      table-wrapper-scroll-y
-      my-custom-scrollbar
-      mb-5
-      form-group
-      files
-      color
-    "
-  >
-    <label>Upload Your File </label>
-    <input
-      type="file"
-      id="csvFileInput"
-      style="padding-bottom: 15px"
-      data-height="500"
-    />
-    <!-- Printing the table with the input CSV file -->
-    <table class="table table-bordered table-striped mb-0" id="csvRoot"></table>
   </div>
 
   <!-- Adding the functionality to download the table just created above -->
@@ -76,6 +76,7 @@
   <script src="tvd-easting.js"></script>
   <script src="tvd-northing.js"></script>
   <script src="csv_importer.js"></script>
+  <script src="rows_count.js"></script>
 
   <!-- Printing the calculated TVD, EASTING, NORTHING -->
   <h1>"table: " <span id="container"></span></h1>
