@@ -6,7 +6,7 @@ var cal_Easting = [];
 var cal_Northing = [];
 
 // Adding csv file - its static in nature right now
-d3.csv("tobecalculated.csv", function (err, rows) {
+d3.csv("dataset_planned.csv", function (err, rows) {
   function unpack(rows, key) {
     return rows.map(function (row) {
       return row[key];
@@ -84,11 +84,14 @@ d3.csv("tobecalculated.csv", function (err, rows) {
     var delta_tvd = (diff_MD / 2) * (Math.cos(Inc1) + Math.cos(Inc2)) * Rf;
     V.push(delta_tvd);
   }
+  console.log("nn", N);
+  console.log("ee", E);
+  console.log("tt", V);
 
   // Put the values of the first Row here in init variables
-  var init_tvd = 290.7;
-  var init_easting = 2.315326;
-  var init_Northing = -6.71399;
+  var init_tvd = 1289.91;
+  var init_easting = 11.37;
+  var init_Northing = 6.98;
   V[0] = init_tvd + V[0];
   cal_TVD[0] = V[0];
   E[0] = init_easting + E[0];
@@ -108,12 +111,36 @@ d3.csv("tobecalculated.csv", function (err, rows) {
     N[i] = N[i] + N[i - 1];
     cal_Northing.push(N[i]);
   }
-  console.log("cal_TVD ", cal_TVD);
-  console.log("cal_Easting ", cal_Easting);
-  console.log("cal_Northing ", cal_Northing);
-  document.getElementById("cal_TVD").innerHTML = cal_TVD;
-  document.getElementById("cal_Easting").innerHTML = cal_Easting;
-  document.getElementById("cal_Northing").innerHTML = cal_Northing;
+  console.log("cal_TVD_abc ", JSON.stringify(cal_TVD));
+  console.log("cal_Easting_abc ", JSON.stringify(cal_Easting));
+  console.log("cal_Northing_abc ", JSON.stringify(cal_Northing));
+  // document.getElementById("cal_TVD").innerHTML = JSON.stringify(cal_TVD);
+  // document.getElementById("cal_Easting").innerHTML = cal_Easting;
+  // document.getElementById("cal_Northing").innerHTML = cal_Northing;
+
+  // Printing the table of the calculated values
+  var resultArr = [];
+
+  for (let i = 0; i < cal_TVD.length; i++) {
+    resultArr.push([cal_TVD[i], cal_Easting[i], cal_Northing[i]]);
+  }
+
+  console.log("some arraay", resultArr);
+
+  var html = "<table>";
+  html += "<td>" + "TVD" + "</td>";
+  html += "<td>" + "Easting" + "</td>";
+  html += "<td>" + "Northing" + "</td>";
+  for (var i = 0; i < resultArr.length; i++) {
+    html += "<tr>";
+
+    for (var j = 0; j < resultArr[i].length; j++) {
+      html += "<td>" + resultArr[i][j] + "</td>";
+    }
+    html += "</tr>";
+  }
+  html += "</table>";
+  document.getElementById("container").innerHTML = html;
 
   var trace0 = {
     type: "scatter3d",
