@@ -37,15 +37,19 @@
       style="padding-bottom: 15px"
       data-height="500"
     />
+    <button>Submit</button>
 
     <!-- Printing the table with the input CSV file -->
-    <table class="table table-bordered table-striped mb-0" id="csvRoot"></table>
+    <!-- <table class="table table-bordered table-striped mb-0" id="csvRoot"></table> -->
 
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="./firebasee.js">
-      // Initialize Firebase
-    </script>
+    <script src="./firebase-config.js"></script>
+    <script src="get_url.js"></script>
+    <!-- <h1>"URL:: " <span id="url"></span></h1> -->
+    <script src="./firebase_upload.js"></script>
+    <!-- <script src="csv_importer.js"></script> -->
   </div>
+
   <div class="container-fluid mr-5" id="front_plot">
     <!-- Plotly chart will be drawn inside this DIV front view -->
   </div>
@@ -83,7 +87,7 @@
   <script src="northing-easting.js"></script>
   <script src="tvd-easting.js"></script>
   <script src="tvd-northing.js"></script>
-  <script src="csv_importer.js"></script>
+
   <script src="rows_count.js"></script>
 
   <!-- Printing the calculated TVD, EASTING, NORTHING -->
